@@ -1,0 +1,58 @@
+{
+    "characters": {
+        "Mario": {
+            "acceleration": 2,
+            "weight": 3,
+            "mini_turbo": 4,
+            "speed": [3, 4, 3, 2],
+            "handling": [4, 3, 4, 5],
+            "traction": 2
+        },
+        "Luigi": {
+            "acceleration": 2,
+            "weight": 3,
+            "mini_turbo": 4,
+            "speed": [3, 4, 3, 2],
+            "handling": [4, 3, 4, 5],
+            "traction": 2
+        }
+    },
+    "vehicles": {
+        "Standard Kart": {
+            "acceleration": 3,
+            "weight": 2,
+            "mini_turbo": 2,
+            "speed": [4, 3, 3, 3],
+            "handling": [3, 3, 2, 4],
+            "traction": 2
+        },
+        "Pipe Frame": {
+            "acceleration": 3,
+            "weight": 2,
+            "mini_turbo": 2,
+            "speed": [4, 3, 3, 3],
+            "handling": [3, 3, 2, 4],
+            "traction": 2
+        }
+    },
+    "tires": {
+        "Standard Tires": {
+            "acceleration": 2,
+            "weight": 3,
+            "mini_turbo": 3,
+            "speed": [3, 4, 4, 3],
+            "handling": [2, 3, 3, 3],
+            "traction": 4
+        }
+    },
+    "gliders": {
+        "Super Glider": {
+            "acceleration": 1,
+            "weight": 1,
+            "mini_turbo": 2,
+            "speed": [2, 2, 3, 2],
+            "handling": [3, 3, 3, 4],
+            "traction": 2
+        }
+    }
+}
