@@ -67,19 +67,22 @@ async def combostats(interaction: discord.Interaction, character: str, vehicle: 
         matching_gliders = find_matching_parts(data["gliders"], glider_stats)
 
         # Filter out the selected part from each matching list
-        matching_characters = [char for char in matching_characters if char != character]
+        matching_characters = [
+            char for char in matching_characters if char != character]
         if not matching_characters:
             matching_characters = ["None found."]
-        matching_vehicles = [vehicle_name for vehicle_name in matching_vehicles if vehicle_name != vehicle]
+        matching_vehicles = [
+            vehicle_name for vehicle_name in matching_vehicles if vehicle_name != vehicle]
         if not matching_vehicles:
             matching_vehicles = ["None found."]
-        matching_tires = [tire_name for tire_name in matching_tires if tire_name != tires]
+        matching_tires = [
+            tire_name for tire_name in matching_tires if tire_name != tires]
         if not matching_tires:
             matching_tires = ["None found."]
-        matching_gliders = [glider_name for glider_name in matching_gliders if glider_name != glider]
+        matching_gliders = [
+            glider_name for glider_name in matching_gliders if glider_name != glider]
         if not matching_gliders:
             matching_gliders = ["None found."]
-
 
         # Build response
         response = (
@@ -130,7 +133,7 @@ async def combostats(interaction: discord.Interaction, character: str, vehicle: 
 
     except KeyError:
         await interaction.response.send_message("One or more of the selected parts do not exist in the database.", ephemeral=True)
-    
+
     except Exception as e:
         await interaction.response.send_message(f"An error occured: {e}")
 
