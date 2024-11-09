@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import discord
 from discord import app_commands
 from games.mk8dx_logic import get_combo_stats
+from games.pokemon_logic import get_pokemon_stats
 
 load_dotenv()
 
@@ -20,7 +21,7 @@ class MarioKartBot(discord.Client):
 bot = MarioKartBot()
 
 
-@bot.tree.command(name="combostats", description="Get stats for Mario Kart 8 Deluxe combo")
+@bot.tree.command(name="mk8dxcombostats", description="Get stats for Mario Kart 8 Deluxe combo")
 @app_commands.describe(
     character="Choose a character",
     vehicle="Choose a vehicle",
@@ -74,6 +75,41 @@ async def combostats(interaction: discord.Interaction, character: str, vehicle: 
             f"- Traction: {stats['total_stats']['traction']}\n"
             f"- Mini-Turbo: {stats['total_stats']['mini_turbo']}"
         )
+
+        await interaction.response.send_message(response)
+
+    except ValueError as e:
+        await interaction.response.send_message(str(e), ephemeral=True)
+    except Exception as e:
+        await interaction.response.send_message(f"An error occurred: {e}")
+
+
+@bot.tree.command(name="scvistats", description="Get competitive stats for a Pokemon in Scarlet & Violet")
+@app_commands.describe(
+    pokemon="Enter the Pokemon's name"
+)
+async def scvistats(interaction: discord.Interaction, pokemon: str):
+    try:
+        stats = get_pokemon_stats(pokemon)
+
+        response = f"**{stats['name']}** (HOME Dex Number #{stats['dex_id']})\n"
+        response += f"Types: {', '.join(stats['types'])}\n\n"
+
+        response += "**Base Stats:**\n"
+        response += f"- HP: {stats['stats']['hp']}\n"
+        response += f"- Attack: {stats['stats']['attack']}\n"
+        response += f"- Defense: {stats['stats']['defense']}\n"
+        response += f"- Sp. Attack: {stats['stats']['sp_attack']}\n"
+        response += f"- Sp. Defense: {stats['stats']['sp_defense']}\n"
+        response += f"- Speed: {stats['stats']['speed']}\n"
+        response += f"- Total: {stats['base_stat_total']}\n\n"
+
+        response += "**Abilities:**\n"
+        response += f"- Normal: {', '.join(stats['abilities']['normal'])}\n"
+        response += f"- Hidden: {stats['abilities']['hidden']}\n\n"
+
+        response += "**Legal VGC Formats:**\n"
+        response += f"- {', '.join(stats['legal_formats'])}"
 
         await interaction.response.send_message(response)
 
