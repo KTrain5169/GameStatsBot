@@ -1,7 +1,7 @@
 import json
 
 # Load data from JSON
-with open('./stats/mk8dx.json') as f:
+with open('./stats/mario_kart/8_deluxe/kart_part_stats.json') as f:
     data = json.load(f)
 
 
