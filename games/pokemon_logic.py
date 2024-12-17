@@ -12,7 +12,7 @@ def get_pokemon_stats(pokemon_name: str):
 
     # Check if pokemon exists
     if pokemon_name not in pokemon_data:
-        raise ValueError(f"Pokemon '{pokemon_name}' doesn't exist in Scarlet & Violet!")
+        raise ValueError(f"Pokémon '{pokemon_name}' doesn't exist in Scarlet & Violet!")
 
     target_pokemon = pokemon_data[pokemon_name]
 

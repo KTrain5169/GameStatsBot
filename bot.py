@@ -84,9 +84,9 @@ async def combostats(interaction: discord.Interaction, character: str, vehicle: 
         await interaction.response.send_message(f"An error occurred: {e}")
 
 
-@bot.tree.command(name="scvistats", description="Get competitive stats for a Pokemon in Scarlet & Violet")
+@bot.tree.command(name="pokestats", description="Get competitive stats for a Pokémon (Scarlet & Violet only for now)")
 @app_commands.describe(
-    pokemon="Enter the Pokemon's name"
+    pokemon="Enter the Pokémon's name"
 )
 async def scvistats(interaction: discord.Interaction, pokemon: str):
     try:
